@@ -1,0 +1,42 @@
+<div ng-controller="DominiosCtrl">
+  <div class="jumbotron text-center">
+    <h2>{{ title }}</h2>
+    <hr>
+    <p>{{ message }}</p>
+
+  <table id="dominios" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="d in data">
+        <td>{{d.Id}}</td>
+        <td>{{d.Nombre}}</td>
+        <td>{{d.Descripcion}}</td>
+        <td class="text-right">
+            <a href="#/editarDominio/{{d.Id}}"><img src="images/ico/edit.png"></a>
+            <a href="#/eliminarDominio/{{d.Id}}"><img src="images/ico/delete.png"></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <script>
+  $(document).ready(function() {
+    $('#dominios').DataTable( {
+        columnDefs: [ {
+            targets: [ 0 ],
+            orderData: [ 0, 1 ]
+        }, {
+            targets: [ 1 ],
+            orderData: [ 1, 0 ]
+        }]
+    } );
+  } );
+  </script>
+</div>
